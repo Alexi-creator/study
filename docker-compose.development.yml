@@ -6,7 +6,7 @@ services:
     build:
       context: ./admin
       args:
-        BUILD_TYPE: $MODE
+        BUILD_TYPE: dev
     command: yarn start
     stdin_open: true
     tty: true

@@ -6,7 +6,7 @@ services:
     build:
       context: ./admin
       args:
-        BUILD_TYPE: $MODE
+        BUILD_TYPE: prod
     container_name: admin
     command: serve -s build -l 3000
     restart: unless-stopped

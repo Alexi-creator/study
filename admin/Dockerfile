@@ -10,5 +10,5 @@ RUN yarn
 
 COPY . .
 
-RUN if [ "$BUILD_TYPE" = "build" ] ; then yarn build ; fi
-RUN if [ "$BUILD_TYPE" = "build" ] ; then yarn global add serve ; fi
+RUN if [ "$BUILD_TYPE" = "prod" ] ; then yarn build ; fi
+RUN if [ "$BUILD_TYPE" = "prod" ] ; then yarn global add serve ; fi
