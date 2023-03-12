@@ -1,0 +1,10 @@
+.root {
+  height: 40px;
+  background-color: var(--color-white);
+}
+
+@media (min-width: 768px) {
+  .root {
+    height: 50px;
+  }
+}

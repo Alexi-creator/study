@@ -1,0 +1,73 @@
+:root[data-theme='light'] {
+  --color-white: #bab8b8;
+  --color-primary: #7cf8ee;
+  --color-blue: #35199d;
+  --color-yellow: #fdde58;
+  --color-green: green;
+  --color-text: #eee;
+  --transition-base: 0.3s ease;
+}
+
+:root[data-theme='dark'] {
+  --color-white: #bab8b8;
+  --color-primary: #1e1e1e;
+  --color-blue: #35199d;
+  --color-yellow: #fdde58;
+  --color-green: green;
+  --color-text: #eee;
+  --transition-base: 0.3s ease;
+}
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input,
+textarea {
+  font-size: 16px;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  background-color: var(--color-primary);
+  color: var(--color-blue);
+  font-family: 'Press Start 2P', cursive;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

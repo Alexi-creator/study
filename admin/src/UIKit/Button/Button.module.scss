@@ -1,0 +1,45 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px transparent;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -0.05em;
+  cursor: pointer;
+  transition: var(--transition-base);
+
+  & .suffix {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &R {
+      order: 1;
+    }
+    &L {
+      order: -1;
+    }
+
+    & > svg {
+      transition: var(--transition-base);
+    }
+  }
+
+  &.blue {
+    color: var(--color-blue);
+
+    & svg {
+      fill: var(--color-blue);
+    }
+  }
+
+  &[disabled] {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

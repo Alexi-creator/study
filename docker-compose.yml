@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+
+  admin:
+    build:
+      context: ./admin
+      args:
+        BUILD_TYPE: $MODE
+    container_name: admin
+    command: serve -s build -l 3000
+    restart: unless-stopped
+    networks:
+      - dos-network
+
+  auth:
+    build: ./auth
+    container_name: auth
+    command: yarn start
+    restart: unless-stopped
+    environment:
+      - PORT=3002 
+      - MONGO_URL=mongodb://auth_db:27017/auth
+      - JWT_ACCESS_KEY=$JWT_ACCESS_SECRET
+      - JWT_REFRESH_KEY=$JWT_REFRESH_SECRET
+      - SMTP_HOST=$SMTP_HOST
+      - SMTP_PORT=$SMTP_PORT
+      - SMTP_USER=$SMTP_USER
+      - SMTP_PASSWORD=$SMTP_PASSWORD
+      - CLIENT_URL=$CLIENT_URL
+      - AUTH_URL=$AUTH_URL
+    depends_on:
+      - auth_db
+    networks:
+      - dos-network
+
+  auth_db:
+    image: mongo:latest
+    container_name: auth-db
+    volumes:
+      - mongodb_auth:/data/db
+    networks:
+      - dos-network
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf.prod:/etc/nginx/conf.d/nginx.conf
+    depends_on:
+      - admin
+      - auth
+    networks:
+      - dos-network
+
+volumes:
+  mongodb_auth:
+
+networks:
+  dos-network:
+    driver: bridge

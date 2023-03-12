@@ -1,0 +1,24 @@
+version: '3.8'
+
+services: 
+
+  admin:
+    build:
+      context: ./admin
+      args:
+        BUILD_TYPE: $MODE
+    command: yarn start
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./admin/src:/usr/src/app/src
+
+  auth:
+    command: yarn dev
+    volumes:
+      - ./auth/src:/usr/src/app/src
+
+  nginx:
+    volumes:
+      - ./nginx/nginx.conf.dev:/etc/nginx/conf.d/nginx.conf
+  
