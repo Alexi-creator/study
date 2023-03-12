@@ -1,12 +1,13 @@
-## Запуск в режиме разработки:
+## Start mode dev:
   docker-compose -f docker-compose.yml -f docker-compose.development.yml up --build
 
-## Админка
-  dev.dos.com - по этому адресу админка, фронт на реакте
+## Admin 
+  dev.dos.com - need add domain for local ip
 
-## Авторизация
-  dev.dos.com/api/auth/ - сервис авторизация
+## Authorization
+  dev.dos.com/api/auth/ - authorization service
 
-## Апишка данных
-  dev.dos.com/api/v1/ - сервис основных данных
+## API service
+  dev.dos.com/api/v1/ - service api data
   
+## Need fill .env file
