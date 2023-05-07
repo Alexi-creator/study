@@ -10,6 +10,11 @@ services:
     container_name: admin
     command: serve -s build -l 3000
     restart: unless-stopped
+    environment:
+      - CLIENT_URL=$CLIENT_URL
+      - CLIENT_URL_DEV=$CLIENT_URL_DEV
+      - AUTH_URL=$AUTH_URL
+      - AUTH_URL_DEV=$AUTH_URL_DEV
     networks:
       - dos-network
 
@@ -19,6 +24,7 @@ services:
     command: yarn start
     restart: unless-stopped
     environment:
+      - NODE_ENV=prod
       - PORT=3002 
       - MONGO_URL=mongodb://auth_db:27017/auth
       - JWT_ACCESS_KEY=$JWT_ACCESS_SECRET
@@ -28,7 +34,9 @@ services:
       - SMTP_USER=$SMTP_USER
       - SMTP_PASSWORD=$SMTP_PASSWORD
       - CLIENT_URL=$CLIENT_URL
+      - CLIENT_URL_DEV=$CLIENT_URL_DEV
       - AUTH_URL=$AUTH_URL
+      - AUTH_URL_DEV=$AUTH_URL_DEV
     depends_on:
       - auth_db
     networks:

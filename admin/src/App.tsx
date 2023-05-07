@@ -3,13 +3,26 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 
 import { Layout } from 'views'
 
+import { selectorUser } from './store/user/selector'
+import { useDispatch, useSelector } from 'react-redux'
+
 import { Login } from 'components'
 
-export const App: React.FC = () => {
-  const isAuth = false
-  const isLoad = false
+import { AppDispatch } from './store'
+import { checkAuth } from './store/user'
+import { StatusEnum } from './store/user/types'
 
-  if (isLoad) {
+export const App: React.FC = () => {
+  const { isAuth, status } = useSelector(selectorUser)
+  const dispatch = useDispatch<AppDispatch>()
+
+  React.useEffect(() => {
+    if (localStorage.getItem('token') && !isAuth) {
+      dispatch(checkAuth())
+    }
+  }, [dispatch, isAuth])
+
+  if (status === StatusEnum.LOADING) {
     return <div>load</div>
   }
 

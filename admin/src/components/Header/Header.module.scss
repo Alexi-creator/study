@@ -1,5 +1,9 @@
 .root {
-  height: 40px;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 40px;
   background-color: var(--color-white);
 }
 

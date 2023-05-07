@@ -91,7 +91,7 @@ class UserService {
       throw ApiError.UnauthorizedError()
     }
 
-    const user = await UserMdodel.findById(userData.id)
+    const user = await UserMdodel.findOne(userData.email)
     const userDto = new UserDto(user)
     const tokens = tokenService.generateToken({ ...userDto })
 

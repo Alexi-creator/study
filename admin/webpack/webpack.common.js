@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
-// const CopyPlugin = require('copy-webpack-plugin')
+const { EnvironmentPlugin } = require('webpack')
 
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.tsx'),
@@ -77,6 +77,12 @@ module.exports = {
       template: path.resolve(__dirname, '..', './src/static/index.html'),
     }),
     new MiniCssExtractPlugin(),
+    new EnvironmentPlugin({
+      CLIENT_URL: false,
+      CLIENT_URL_DEV: false,
+      AUTH_URL: false,
+      AUTH_URL_DEV: false,
+    }),
   ],
   stats: 'errors-only',
 }

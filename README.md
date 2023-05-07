@@ -5,7 +5,7 @@
   docker-compose -f docker-compose.yml -f docker-compose.development.yml up --build
 
 ## Admin
-  need add domain for local ip host
+  need add domain localhost for local ip host
   dev.dos.com - dev
   dos.com - prod
 

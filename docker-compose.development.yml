@@ -17,6 +17,8 @@ services:
     command: yarn dev
     volumes:
       - ./auth/src:/usr/src/app/src
+    environment:
+      - NODE_ENV=dev
 
   nginx:
     volumes:
