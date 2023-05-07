@@ -13,7 +13,7 @@ import { checkAuth } from './store/user'
 import { StatusEnum } from './store/user/types'
 
 export const App: React.FC = () => {
-  const { isAuth, status } = useSelector(selectorUser)
+  const { isAuth, isActivated, status } = useSelector(selectorUser)
   const dispatch = useDispatch<AppDispatch>()
 
   React.useEffect(() => {
@@ -30,7 +30,15 @@ export const App: React.FC = () => {
     return (
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<div>home page</div>} />
+          <Route
+            index
+            element={
+              <div>
+                home page
+                {!isActivated && <h1>Your accaunt is not confirm!</h1>}
+              </div>
+            }
+          />
           <Route path="login" element={<Navigate to="/" replace />} />
           <Route path="*" element={<div>404 page</div>} />
         </Route>

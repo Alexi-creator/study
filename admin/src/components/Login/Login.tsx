@@ -24,6 +24,7 @@ export const Login: React.FC = (): JSX.Element => {
   const handleSubmitForm = async (data: IAuthParamsProps) => {
     try {
       dispatch(fetchUser(data))
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       console.log('error login', e.response?.data?.message)
     }

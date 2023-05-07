@@ -7,6 +7,7 @@ export enum StatusEnum {
 export interface IUserSlice {
   email: string
   isAuth: boolean
+  isActivated: boolean
   status: StatusEnum
 }
 

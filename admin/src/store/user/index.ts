@@ -10,6 +10,7 @@ import { AuthResponse } from '../../models/response/AuthResponse'
 const initialState: IUserSlice = {
   email: '',
   isAuth: false,
+  isActivated: false,
   status: StatusEnum.SUCCESS,
 }
 
@@ -52,6 +53,7 @@ const userSlice = createSlice({
       (state, action: PayloadAction<AuthResponse>) => {
         state.email = action?.payload?.user?.email
         state.isAuth = true
+        state.isActivated = action?.payload?.user?.isActivated
         state.status = StatusEnum.SUCCESS
         localStorage.setItem('token', action?.payload?.accessToken)
       }
